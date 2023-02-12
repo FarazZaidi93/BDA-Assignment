@@ -1,0 +1,48 @@
+I would be running MYSQL inside a docker container
+--Log into docker account
+docker login 
+
+--Pulling mysql image 
+docker pull mysql
+
+--Creating mysql container  
+docker run --name task -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql
+
+--Check which container is running
+docker ps
+
+--Opening mysql in docker container
+docker exec -it task /bin/bash
+mysql -uroot -p -A
+
+--Creating database inside mysql container
+CREATE DATABASE testdb;
+
+--Accessing database
+USE testdb
+
+--Inside database creating table
+CREATE TABLE testdb(
+col1 varchar(225), 
+col2 varchar(225),
+col3 varchar(25));
+
+--populating the table
+INSERT into testdb (col1,col2,col3) VALUES("Faraz","Zaidi","faraz@company.com");
+INSERT into testdb (col1,col2,col3) VALUES("Usama","Ishtiaq","usama@company.com");
+INSERT into testdb (col1,col2,col3) VALUES("Ronnie","Patel","ronnie@company.com");
+
+--Showing Table
+select * from testdb;
+
+select col2 from testdb
+limit 2;
+
+--Exit the mysql container
+EXIT
+
+--Video Link
+https://www.youtube.com/watch?v=zkoMajPfeN4
+
+--Github Link
+https://github.com/FarazZaidi93/BDA-Assignment/upload/main
